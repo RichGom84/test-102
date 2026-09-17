@@ -8,7 +8,7 @@
 | 파일 | 역할 |
 | --- | --- |
 | `mp4/slide-01.mp4` ~ `slide-08.mp4` | 효과음을 뺀 무음 장별 영상 (1080x1350, 50fps) |
-| `narration.md` | 8장 대본. 장마다 `[구간·예상시간]` 표기, 빠른 말투 기준 총 약 70초 |
+| `narration.md` | 8장 대본. 장마다 `[구간·예상시간]` 표기, 실측 속도 기준 총 약 70초 |
 | `gen_tts.py` | Qwen3-TTS 음성 복제로 대본 8장을 `audio/s01~s08.wav` 로 생성 (`requirements-tts.txt`, `tts_setup_notes.md` 참고) |
 | `merge_narration.py` | 장별 음성 길이에 맞춰 영상 끝 프레임을 늘려 합치는 ffmpeg 스크립트 |
 | `CLAUDE_CODE_PROMPT.md` | 클로드 코드에 붙여넣을 지시문 (Qwen TTS 음성 복제 → 8개 생성 → 1개 확인 후 합체) |
