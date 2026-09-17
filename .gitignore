@@ -1,0 +1,15 @@
+# 개인 목소리 샘플 / 생성된 음성 / 결과 영상은 커밋하지 않음
+ref/
+audio/
+output/
+
+# 파이썬
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 모델 캐시 등
+*.pt
+*.safetensors
+.cache/
