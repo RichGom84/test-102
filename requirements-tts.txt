@@ -1,0 +1,8 @@
+# Qwen3-TTS 음성 복제에 필요한 패키지
+# 설치:  pip install -r requirements-tts.txt
+# torch 는 GPU 종류에 맞는 빌드를 https://pytorch.org/get-started/locally/ 에서 먼저 설치하면 더 확실합니다.
+qwen-tts
+torch
+soundfile
+numpy
+imageio-ffmpeg

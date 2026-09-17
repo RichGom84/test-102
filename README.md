@@ -9,6 +9,7 @@
 | --- | --- |
 | `mp4/slide-01.mp4` ~ `slide-08.mp4` | 효과음을 뺀 무음 장별 영상 (1080x1350, 50fps) |
 | `narration.md` | 8장 대본. 장마다 `[구간·예상시간]` 표기, 빠른 말투 기준 총 약 70초 |
+| `gen_tts.py` | Qwen3-TTS 음성 복제로 대본 8장을 `audio/s01~s08.wav` 로 생성 (`requirements-tts.txt`, `tts_setup_notes.md` 참고) |
 | `merge_narration.py` | 장별 음성 길이에 맞춰 영상 끝 프레임을 늘려 합치는 ffmpeg 스크립트 |
 | `CLAUDE_CODE_PROMPT.md` | 클로드 코드에 붙여넣을 지시문 (Qwen TTS 음성 복제 → 8개 생성 → 1개 확인 후 합체) |
 
@@ -18,12 +19,14 @@
 2. 클로드 코드를 이 폴더에서 열고 `CLAUDE_CODE_PROMPT.md` 내용을 붙여넣습니다.
 3. 클로드 코드가 `audio/s01.wav` ~ `s08.wav` 를 만들고 `output/final.mp4` 로 합칩니다.
 
-음성이 이미 있다면 클로드 코드 없이 바로 합칠 수 있습니다.
+클로드 코드 없이 직접 돌리려면 (GPU 권장):
 
 ```bash
-pip install imageio-ffmpeg      # ffmpeg 가 없을 때만
-python merge_narration.py --only 3   # 3장만 미리보기 → output/preview-03.mp4
-python merge_narration.py            # 전체 → output/final.mp4
+pip install -r requirements-tts.txt
+python gen_tts.py --only 1 --ref-slide 2   # 샘플이 2장을 읽은 녹음일 때, 1장만 먼저 생성
+python merge_narration.py --only 1         # 미리보기 → output/preview-01.mp4
+python gen_tts.py --ref-slide 2            # 8장 전체 생성
+python merge_narration.py                  # 전체 합치기 → output/final.mp4
 ```
 
 옵션: `--tail 0.5`(말 끝난 뒤 정지 여유, 초), `--gap 0.3`(장 사이 간격, 초), `--crf 18`(화질).
